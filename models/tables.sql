@@ -10,6 +10,7 @@ CREATE TABLE routes(
     route_url VARCHAR(100) NOT NULL
     route_color VARCHAR(50) NULL,
     route_text_color VARCHAR(50) NULL
+    PRIMARY KEY (route_id)AZAaAAAAAAAA
 )
 -- ROW=["route_id","service_id","trip_id","trip_headsign","direction_id","block_id","shape_id"]
 CREATE TABLE trips(
@@ -19,7 +20,10 @@ CREATE TABLE trips(
     trip_headsign VARCHAR(50),
     direction_id integer,
     block_id integer,
-    shape_id
+    shape_id integer,
+    PRIMARY KEY (trip_id),
+    FOREIGN KEY (route_id) REFERENCES routes(route_id)
+
 )
 -- ROW=["stop_id","stop_code","stop_name","stop_desc","stop_lat","stop_lon","zone_id","stop_url"]
 
@@ -31,7 +35,8 @@ CREATE TABLE stops(
     stop_lat integer,
     stop_lon integer,
     zone_id integer NULL,
-    stop_url VARCHAR(50) NULL
+    stop_url VARCHAR(50) NULL,
+    PRIMARY KEY (stop_id)
 )
 -- Trip_id,arrival_time,departure_time,stop_id,stop_sequence,stop_headsign,pickup_type,drop_off_type,shape_dist_traveled
 CREATE TABLE stop_times(
@@ -43,6 +48,7 @@ CREATE TABLE stop_times(
     stop_headsign VARCHAR(50) NULL,
     pickup_type VARCHAR(50) NULL,
     drop_off_type VARCHAR(50) NULL,
-    shape_dist_traveled VARCHAR(50) NULL
+    shape_dist_traveled VARCHAR(50) NULL,
+    FOREIGN KEY (trip_id) REFERENCES trips(trip_id)
 
 )
