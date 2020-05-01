@@ -1,18 +1,18 @@
-USE alexisbounds;
--- ROW=["route_id","agency_id","route_short_name","route_long_name","route_desc","route_type","route_url","route_color","route_text_color"]
+-- DROP DATABASE alexisbounds;
+
+USE DATABASE alexisbounds;
 CREATE TABLE routes(
     route_id integer NOT NULL,
     agency_id VARCHAR(50),
-    route_short_name integer NOT NULL,
-    route_long_name integer NOT NULL,
+    route_short_name VARCHAR(50) NOT NULL,
+    route_long_name VARCHAR(50) NOT NULL,
     route_desc VARCHAR(50) NULL,
     route_type VARCHAR(50) Null,
-    route_url VARCHAR(100) NOT NULL
+    route_url VARCHAR(100) NOT NULL,
     route_color VARCHAR(50) NULL,
-    route_text_color VARCHAR(50) NULL
-    PRIMARY KEY (route_id)AZAaAAAAAAAA
-)
--- ROW=["route_id","service_id","trip_id","trip_headsign","direction_id","block_id","shape_id"]
+    route_text_color VARCHAR(50) NULL,
+    PRIMARY KEY (route_id)
+);
 CREATE TABLE trips(
     route_id integer NOT NULL,
     service_id integer,
@@ -24,8 +24,7 @@ CREATE TABLE trips(
     PRIMARY KEY (trip_id),
     FOREIGN KEY (route_id) REFERENCES routes(route_id)
 
-)
--- ROW=["stop_id","stop_code","stop_name","stop_desc","stop_lat","stop_lon","zone_id","stop_url"]
+);
 
 CREATE TABLE stops(
     stop_id integer NOT NULL,
@@ -37,8 +36,7 @@ CREATE TABLE stops(
     zone_id integer NULL,
     stop_url VARCHAR(50) NULL,
     PRIMARY KEY (stop_id)
-)
--- Trip_id,arrival_time,departure_time,stop_id,stop_sequence,stop_headsign,pickup_type,drop_off_type,shape_dist_traveled
+);
 CREATE TABLE stop_times(
     trip_id integer NOT NULL,
     arrival_time TIME(0),
