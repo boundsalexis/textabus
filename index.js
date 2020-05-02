@@ -4,8 +4,8 @@ const db = require("./db")
 //   console.log(err, res)
 
 // })
-const assistant = require("./autopilot/autopilot");
-const other = require("./autopilot/other")
+const assistant = require("./autopilot/assistant");
 
-assistant.listAssistant();
-console.log(other.other);
+// assistant.createAssistant();
+
+assistant.checkDefaults();
