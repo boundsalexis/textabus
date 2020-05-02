@@ -1,6 +1,3 @@
--- DROP DATABASE alexisbounds;
-
-USE DATABASE alexisbounds;
 CREATE TABLE routes(
     route_id integer NOT NULL,
     agency_id VARCHAR(50),
