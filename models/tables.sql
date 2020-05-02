@@ -31,16 +31,16 @@ CREATE TABLE stops(
     stop_code integer,
     stop_name VARCHAR(50),
     stop_desc VARCHAR(50) NULL,
-    stop_lat integer,
-    stop_lon integer,
-    zone_id integer NULL,
+    stop_lat FLOAT(50),
+    stop_lon FLOAT(50),
+    zone_id VARCHAR(50) NULL,
     stop_url VARCHAR(50) NULL,
     PRIMARY KEY (stop_id)
 );
 CREATE TABLE stop_times(
     trip_id integer NOT NULL,
-    arrival_time TIME(0),
-    departure_time TIME(0),
+    arrival_time TIME(precision),
+    departure_time TIME(precision)
     stop_id integer,
     stop_sequence integer,
     stop_headsign VARCHAR(50) NULL,
